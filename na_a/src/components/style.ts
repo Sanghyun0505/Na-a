@@ -1,0 +1,11 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  width: 100%;
+  height: calc(100vh - 110px);
+
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 60px;
+`;
