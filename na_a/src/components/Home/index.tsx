@@ -4,9 +4,11 @@ import HomeItem from "./HomeItem";
 import * as S from "./style";
 import addListBtn from "../../assets/addListBtn.svg";
 import { Container } from "../style";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [select, setSelect] = useState<string>("전체");
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -22,11 +24,15 @@ export default function Home() {
         ))}
       </S.CategoryContainer>
       <S.ListWrap>
-        {Array.from({ length: 5 }).map((item, idx) => (
+        {Array.from({ length: 3 }).map((item, idx) => (
           <HomeItem key={idx} />
         ))}
       </S.ListWrap>
-      <S.Btn src={addListBtn} alt="" />
+      <S.Btn
+        src={addListBtn}
+        onClick={() => navigate("/community/regist")}
+        alt=""
+      />
     </Container>
   );
 }
