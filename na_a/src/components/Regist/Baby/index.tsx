@@ -8,7 +8,7 @@ import { useState } from "react";
 import backArrow from "../../../assets/backArrow.svg";
 import postListBtn from "../../../assets/postListBtn.svg";
 import imgUpload from "../../../assets/imgUpload.svg";
-import { Daily, DailyContainer, DailyInput, Input } from "./style";
+import { Daily, DailyContainer, Input } from "./style";
 
 export default function Baby() {
   const navigate = useNavigate();
