@@ -7,6 +7,8 @@ import UserPage from "../pages/UserPage";
 import CommunityRegistPage from "../pages/Regist/Community/RegistPage";
 import BabyDaily from "../components/Baby/BabyDaily";
 import BabyCareRegistPage from "../pages/Regist/BabyCare/RegistPage";
+import LoginPage from "../pages/Auth/LoginPage";
+import SignUpPage from "../pages/Auth/SignUpPage";
 
 export default function Router() {
   return (
@@ -19,6 +21,8 @@ export default function Router() {
       <Route path="/festival" element={<FestivalPage />} />
       <Route path="/hospital" element={<HosptialPage />} />
       <Route path="/mypage" element={<UserPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
     </Routes>
   );
 }
