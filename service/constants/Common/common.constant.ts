@@ -1,13 +1,13 @@
-import baby from "@/public/public/baby.svg";
-import community from "@/public/public/community.svg";
-import festival from "@/public/public/festival.svg";
-import hospital from "@/public/public/hospital.svg";
-import mypage from "@/public/public/mypage.svg";
-import selectCommunity from "@/public/public/selectCommunity.svg";
-import selectFestival from "@/public/public/selectFestival.svg";
-import selectHospital from "@/public/public/selectHospital.svg";
-import selectMyPage from "@/public/public/selectMyPage.svg";
-import selectBaby from "@/public/public/selectBaby.svg";
+import community from "@/public/community.svg";
+import selectCommunity from "@/public/selectCommunity.svg";
+import children from "@/public/children.svg";
+import selectChildren from "@/public/selectChildren.svg";
+import selectFestival from "@/public/selectFestival.svg";
+import festival from "@/public/festival.svg";
+import hospital from "@/public/hospital.svg";
+import selectHospital from "@/public/selectHospital.svg";
+import myPage from "@/public/myPage.svg";
+import selectMyPage from "@/public/selectMyPage.svg";
 
 interface Type {
   id: number;
@@ -25,26 +25,26 @@ export const FOOTER_ITEMS: Type[] = [
   },
   {
     id: 1,
-    img: baby,
-    selectImg: selectBaby,
-    link: "/babycare",
+    img: children,
+    selectImg: selectChildren,
+    link: "/ChildrenPage",
   },
   {
     id: 2,
     img: festival,
     selectImg: selectFestival,
-    link: "/festival",
+    link: "/FestivalPage",
   },
   {
     id: 3,
     img: hospital,
     selectImg: selectHospital,
-    link: "/hospital",
+    link: "/HospitalPage",
   },
   {
     id: 4,
-    img: mypage,
+    img: myPage,
     selectImg: selectMyPage,
-    link: "/mypage",
+    link: "/UserPage",
   },
 ];
