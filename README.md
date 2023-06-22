@@ -1,38 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ `{{ 팀 이름 }}`팀 해커톤 주제
+# `Na-a`팀 해커톤 주제
 
-## Getting Started
+## 팀명
 
-First, run the development server:
+**(필수)** 팀명을 적어주세요.
+Na-A
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## 제품명
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**(필수)** 해커톤에서 만들 제품 또는 서비스 이름을 적어주세요.
+아이케어
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 참가 동기
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**(필수)** 해커톤에 참가하기 된 동기를 적어주세요.
+개발자 및 기획, 디자이너 간의 네트워킹을 통한 인싸이트 수립
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 주요 기능 및 특징, 기대 효과
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**(필수)** 제품 또는 서비스의 주요 기능, 특징과 그 기대 효과에 대해 적어주세요.
+미흡한 지방 인프라로 인해 아이돌봄의 불편을 겪는 부모를 위해 지방 편의시설 및
+네트워크 인프라를 구축을 통해 '원테이크 아이돌봄서비스'를 제공하여 수도권과 지방의
+문화 격차 해소 
 
-## Learn More
+아이케어-부모의 아이 일지 작성/응급상황시 아이 기본정보
+커뮤니티-지역 별 부모 커뮤니티
+행사-지역 별 행사정보 공유
+병원-응급실 병상확인/인근 병원 검색/병원 후기
 
-To learn more about Next.js, take a look at the following resources:
+## 제품 아키텍처 (이미지)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
