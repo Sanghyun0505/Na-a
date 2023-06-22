@@ -4,8 +4,10 @@ import useHideHeader from "@/hooks/Common/useHideHeader";
 import Image from "next/image";
 import logo2 from "@/public/logo2.svg";
 import { useSignUp } from "@/hooks/Auth/useSignUp";
+import { useRouter } from "next/router";
 
 export default function SignUp() {
+  const router = useRouter();
   useHideHeader();
   useHideFooter();
   const {
@@ -19,7 +21,7 @@ export default function SignUp() {
   } = useSignUp();
   return (
     <S.AuthContainer>
-      <S.AuthForm onSubmit={handleSignUpSubmit} auth={"35px"}>
+      <S.AuthForm onSubmit={handleSignUpSubmit} auth={"25px"}>
         <S.LogoContainer>
           <Image src={logo2} alt="" />
         </S.LogoContainer>
@@ -74,6 +76,10 @@ export default function SignUp() {
           />
         </div>
         <S.AuthButton type="submit">회원가입</S.AuthButton>
+        <S.AuthIsAccount>
+          계정이 있으신가요?{" "}
+          <span onClick={() => router.push("/SignInPage")}>로그인하기</span>
+        </S.AuthIsAccount>
       </S.AuthForm>
     </S.AuthContainer>
   );

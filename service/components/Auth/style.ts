@@ -50,3 +50,13 @@ export const AuthButton = styled.button`
   margin-top: 15px;
   font-size: 18px;
 `;
+export const AuthIsAccount = styled.div`
+  width: 100%;
+  height: 50px;
+  text-align: center;
+
+  span {
+    color: #ffdf65;
+    cursor: pointer;
+  }
+`;
