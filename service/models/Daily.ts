@@ -14,4 +14,4 @@ const DailySchema: Schema = new Schema({
   child: { type: Schema.Types.ObjectId, ref: 'Child', required: true },
 });
 
-export default mongoose.model<IDaily>('Daily', DailySchema);
+export default mongoose.models.Daily || mongoose.model<IDaily>('Daily', DailySchema);
