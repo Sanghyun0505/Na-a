@@ -8,7 +8,7 @@ export enum ChildrenGender {
 }
 
 export interface IChild extends Document {
-  id: string;
+  _id: string;
   name: string;
   gender: ChildrenGender;
   profileImage?: string;
@@ -18,13 +18,12 @@ export interface IChild extends Document {
   bloodType?: string | null;
   allergies?: string[] | null;
   medications?: string[] | null;
-  medicalRecords?: string | null;
+  medicalRecords?: string[] | null;
   parent: IUser['_id'];
   daily: IDaily['_id'][];
 }
 
 const ChildSchema: Schema = new Schema({
-  id: { type: String, required: true },
   name: { type: String, required: true },
   gender: { type: String, enum: Object.values(ChildrenGender), required: true },
   profileImage: { type: String },
@@ -34,9 +33,9 @@ const ChildSchema: Schema = new Schema({
   bloodType: { type: String, default: null },
   allergies: [{ type: String }],
   medications: [{ type: String }],
-  medicalRecords: { type: String, default: null },
+  medicalRecords: [{ type: String, default: null }],
   parent: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   daily: [{ type: Schema.Types.ObjectId, ref: 'Daily' }],
 });
 
-export default mongoose.model<IChild>('Child', ChildSchema);
+export default mongoose.models.Child || mongoose.model<IChild>('Child', ChildSchema);

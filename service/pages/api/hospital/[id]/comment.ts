@@ -37,8 +37,6 @@ async function handler(
   }
   else if (req.method === 'GET') {
     try {
-
-      // user select profileImage userid username
       const { id } = req.query;
       const hospitalReviews = await HospitalReview.find({ hospital_id: id })
         .populate('user', 'profileImage userid username')
