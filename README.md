@@ -1,5 +1,5 @@
 # Na-a - 아이케어
-
+해커그라운드 해커톤에 참여하는 Na-a 팀의 아이케어입니다.
 
 ## 제품/서비스 소개
 
@@ -32,54 +32,27 @@ cd Get-It
 1. 다음과 같이 인프라를 배포합니다
 ```bash
 az login
-az deployment group create --resource-group {{내 리소스 그룹}} --template-file ./infra/main.bicep --parameters name=icare
+az deployment group create --resource-group "{{내 리소스 그룹}}" --template-file ./infra/main.bicep --parameters name={{원하는 서비스 아이디}}
 ```
 3. 다음과 같이 github workflow 시크릿을 설정합니다. (윈도우 기준)
-```ps1
-az webapp deployment list-publishing-profiles --name "icare-app-heckers" --resource-group $AZURE_RESOURCE_GROUP --xml > publish_profile.xml
+```bash
+az webapp deployment list-publishing-profiles --name "{{원하는 서비스 아이디}}-app-heckers" --resource-group "{{내 리소스 그룹}}" --xml > publish_profile.xml
 
 gh auth login
-gh secret set AZURE_APP_NAME --repo $GITHUB_USERNAME/Get-It --body "$AZURE_ENV_NAME"
-cat publish_profile.xml | gh secret set AZURE_WEBAPP_PUBLISH_PROFILE --repo $GITHUB_USERNAME/Get-It
+gh secret set AZURE_APP_NAME --repo {{내 깃헙 아이디}}/Na-a --body "{{원하는 서비스 아이디}}"
+cat publish_profile.xml | gh secret set AZUREAPPSERVICE_PUBLISHPROFILE --repo {{내 깃헙 아이디}}/Na-a
 ```
 4. 포크한 리포지토리의 Github Actions를 활성화 해줍니다.
 ```
-https://github.com/{{자신의 Github ID}}/Get-It/actions
+https://github.com/{{자신의 Github ID}}/Na-a/actions
 에 접속해 초록색 Enable 버튼 클릭
 ```
 5. 다음과 같이 github actions workflow를 실행합니다. (윈도우 기준)
-```ps1
-gh workflow run "Azure Deployment" --repo $GITHUB_USERNAME/Get-It
+```bash
+gh workflow run "Deploy Azure" --repo {{내 깃헙 아이디}}/Na-a
 ```
-6. 배포가 완료될때까지 기다립니다. (10분 가량 소요됩니다.)
-7. 다음과 같이 백엔드 배포를 확인합니다.
-```ps1
-iwr https://$AZURE_ENV_NAME-app.azurewebsites.net/api/charger
+6. 배포가 완료될때까지 기다립니다. (15분 가량 소요됩니다.)
+7. 다음과 같이 배포를 확인합니다.
+```bash
+curl https://{{원하는 서비스 아이디}}-app-hackers.azurewebsites.net
 ```
-### 프론트엔드 시작하기
-1. 이 리포지토리에 있는 Frontend Branch를 clone 합니다
-```ps1
-git clone --branch Frontend https://github.com/hackersground-kr/Get-It.git
-```
-2. 다음과 링크에 접속해서 Node js LTS 버전을 설치해줍니다 (Node js 18.x 이여야합니다)
-```ps1
-https://nodejs.org/en
-```
-3. 자동적으로 환경변수 세팅이 되지만 터미널에 node -v 를 입력하여 설치가 제대로 되었는지 확인합니다
-```ps1
-node -v
-```
-4. 터미널에서 clone한 repository로 이동하여 node package manager를 사용해 라이브러리를 설치해줍니다
-```ps1
-cd Get-It
-npm i
-```
-5. 패키지 설치가 완료될때까지 기다립니다. (10분 가량 소요됩니다.)
-6. 설치가 완료되면 expo를 실행시켜 배포를 활성화 합니다
-```ps1
-npx expo start
-```
-7. 배포가 완료된 상황에서 android 가상머신을 실행후에 'a'를 입력하면 배포 및 실행이 진행됩니다
-8. 'i'를 입력하면 ios 가상머신으로 실행됩니다.
-9. Physical Device로 실행 하기 위해서는 같은 네트워크에 연결된 환경에서 스마트폰에 expo 앱을 설치하고 생성된 QR을 찍으면 앱이 배포됩니다.
-10.  중간에 앱이 멈췄다면 터미널에서 'r'키를 눌러서 reload를 해주면 됩니다

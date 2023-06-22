@@ -96,7 +96,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
-      appCommandLine: 'pm2 --no-daemon start ecosystem.config.js'
+      appCommandLine: 'cd service; pm2 --no-daemon start ecosystem.config.js'
       linuxFxVersion: 'NODE|18-lts'
       appSettings: [
         {
