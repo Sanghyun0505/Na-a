@@ -1,4 +1,4 @@
-import { IsDate, IsEnum, IsNumber, IsOptional, IsString, IsUrl } from 'class-validator'
+import { IsDateString, IsEnum, IsNumber, IsOptional, IsString, IsUrl } from 'class-validator'
 import { ChildrenGender } from '../entities/child.entity'
 
 export class UpdateChildrenDto {
@@ -14,7 +14,7 @@ export class UpdateChildrenDto {
   @IsOptional()
     profileImage?: string
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
     birthdate: Date
 
