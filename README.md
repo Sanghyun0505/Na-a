@@ -27,7 +27,7 @@
 1. 이 리포지토리를 포크하고 다음 명령어로 클론합니다.
 ```bash
 git clone https://github.com/{{내 깃헙 아이디}}/Na-a.git
-cd Get-It
+cd Na-a
 ```
 1. 다음과 같이 인프라를 배포합니다
 ```bash
