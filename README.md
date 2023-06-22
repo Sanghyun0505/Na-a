@@ -1,27 +1,38 @@
-# `Na-a` - `아이케어(가칭)`
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-해커그라운드 해커톤에 참여하는 `Na-a` 팀의 `아이케어(가칭)`입니다.
+## Getting Started
 
-## 제품/서비스 소개
+First, run the development server:
 
-<!-- 아래 링크는 지우지 마세요 -->
-[제품/서비스 소개 보기](TOPIC.md)
-<!-- 위 링크는 지우지 마세요 -->
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-## 오픈 소스 라이센스
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-<!-- 아래 링크는 지우지 마세요 -->
-[오픈소스 라이센스 보기](./LICENSE)
-<!-- 위 링크는 지우지 마세요 -->
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-## 설치 방법
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-> **아래 제공하는 설치 방법을 통해 심사위원단이 여러분의 제품/서비스를 실제 Microsoft 애저 클라우드에 배포하고 설치할 수 있어야 합니다. 만약 아래 설치 방법대로 따라해서 배포 및 설치가 되지 않을 경우 본선에 진출할 수 없습니다.**
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-### 사전 준비 사항
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-> **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위해 사전에 필요한 준비 사항들을 적어주세요.**
+## Learn More
 
-## 시작하기
+To learn more about Next.js, take a look at the following resources:
 
-> **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위한 절차를 구체적으로 나열해 주세요.**
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
