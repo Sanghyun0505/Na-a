@@ -1,5 +1,3 @@
-import { ACCESS_TOKEN_KEY } from "@/constants/Auth/auth.constants";
-import token from "@/libs/Token/token";
 import { SignUpType } from "@/types/Auth/auth.type";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -8,7 +6,7 @@ import { FormEvent, useState } from "react";
 export const useSignUp = () => {
   const router = useRouter();
   const [variable, setVariable] = useState<SignUpType>({
-    name: "",
+    username: "",
     userid: "",
     password: "",
     passwordChk: "",
@@ -26,11 +24,11 @@ export const useSignUp = () => {
   const handleSignUpSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      if (variable.name === "") {
+      if (variable.username === "") {
         return window.alert("이름을 입력해주세요!");
       }
       if (variable.type === "") {
-        return window.alert("성별을 입력해주세요!");
+        return window.alert("엄마나 아빠를 입력해주세요!");
       }
       if (variable.userid === "") {
         return window.alert("아이디를 입력해주세요!");
@@ -47,23 +45,22 @@ export const useSignUp = () => {
 
       let { passwordChk, ...updatedVariable } = variable;
 
-      if (variable.type === "남성") {
+      if (variable.type === "아빠") {
         updatedVariable = {
           ...updatedVariable,
-          type: 0,
+          type: "FATHER",
         };
       } else {
         updatedVariable = {
           ...updatedVariable,
-          type: 1,
+          type: "MOTHER",
         };
       }
-      
+
       const data = await axios.post("/api/auth/signup", updatedVariable);
-      token.setToken(ACCESS_TOKEN_KEY, data.data.token);
       window.alert("회원가입에 성공하셨습니다.");
       setVariable({
-        name: "",
+        username: "",
         userid: "",
         password: "",
         passwordChk: "",

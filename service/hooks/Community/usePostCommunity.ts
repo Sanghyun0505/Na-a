@@ -1,3 +1,4 @@
+import { customAxios } from "@/libs/Axios/customAxios";
 import { useState } from "react";
 
 export const usePostCommunity = () => {
@@ -8,9 +9,15 @@ export const usePostCommunity = () => {
 
   const handleImgChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const formData = new FormData();
-    if (e.target.files) {
-      formData.append("file", e.target.files[0]);
+    try {
+      const formData = new FormData();
+      if (e.target.files) {
+        formData.append("file", e.target.files[0]);
+        const data = await customAxios.post("/files", formData);
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -35,7 +42,6 @@ export const usePostCommunity = () => {
     if (images === "") {
       return window.alert("이미지를 선택해주세요.");
     }
-
   };
 
   return {

@@ -1,9 +1,9 @@
 export interface SignUpType {
-  name: string;
+  username: string;
   userid: string;
   password: string;
   passwordChk: string;
-  type: string | number;
+  type: string;
 }
 
 export interface SignInType {

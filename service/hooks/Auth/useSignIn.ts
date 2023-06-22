@@ -1,3 +1,5 @@
+import { ACCESS_TOKEN_KEY } from "@/constants/Auth/auth.constants";
+import token from "@/libs/Token/token";
 import { SignInType } from "@/types/Auth/auth.type";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -29,8 +31,8 @@ export const useSignIn = () => {
         return window.alert("비밀번호를 다시 입력해주세요!");
       }
       const data = await axios.post("/api/auth/signin", variable);
+      token.setToken(ACCESS_TOKEN_KEY, data.data.data.token);
       router.push("/");
-      console.log(data);
       setVariable({ userid: "", password: "" });
     } catch (e) {
       console.log(e);

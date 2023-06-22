@@ -16,7 +16,7 @@ export default function SignIn() {
     <S.AuthContainer>
       <S.AuthForm onSubmit={handleSignInSubmit} auth={"75px"}>
         <S.LogoContainer>
-          <Image src={logo2} alt="" />
+          <Image src={logo2} alt="logo2" />
         </S.LogoContainer>
         <div>
           <S.Title>아이디</S.Title>

@@ -26,11 +26,11 @@ export default function CommunityRegist() {
     <>
       <S.CategoryHeader>
         <div>
-          <S.Img src={backArrow} onClick={() => router.back()} alt="" />
+          <S.Img src={backArrow} onClick={() => router.back()} alt="post" />
           <S.Title>새 게시글</S.Title>
         </div>
         <div>
-          <S.Img src={check} onClick={handleSubmit} alt="" />
+          <S.Img src={check} onClick={handleSubmit} alt="check" />
         </div>
       </S.CategoryHeader>{" "}
       <CommonContainer>
@@ -52,7 +52,7 @@ export default function CommunityRegist() {
           onChange={handleImgChange}
         />
         <S.RegistImgContainer htmlFor="file">
-          <S.SelectImgUpload src={uploadImg} alt="" />
+          <S.SelectImgUpload src={uploadImg} alt="upload" />
         </S.RegistImgContainer>
         <S.RegistTitleInput
           placeholder="제목 쓰기..."

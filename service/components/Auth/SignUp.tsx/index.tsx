@@ -11,7 +11,7 @@ export default function SignUp() {
   useHideHeader();
   useHideFooter();
   const {
-    name,
+    username,
     userid,
     password,
     passwordChk,
@@ -23,15 +23,15 @@ export default function SignUp() {
     <S.AuthContainer>
       <S.AuthForm onSubmit={handleSignUpSubmit} auth={"25px"}>
         <S.LogoContainer>
-          <Image src={logo2} alt="" />
+          <Image src={logo2} alt="logo2" />
         </S.LogoContainer>
         <div>
           <S.Title>이름</S.Title>
           <S.AuthInput
             placeholder="이름을 입력해주세요."
             type="text"
-            name="name"
-            value={name}
+            name="username"
+            value={username}
             onChange={handleSignUpChange}
           />
         </div>
@@ -68,7 +68,7 @@ export default function SignUp() {
         <div>
           <S.Title>성별</S.Title>
           <S.AuthInput
-            placeholder="성별을 입력해주세요. ex) 남성, 여성"
+            placeholder="엄마 아빠를 입력해주세요."
             type="text"
             name="type"
             value={type}

@@ -12,7 +12,7 @@ export default function Footer() {
           src={router.pathname === item.link ? item.selectImg : item.img}
           onClick={() => router.push(item.link)}
           key={item.id}
-          alt=""
+          alt="footer"
         />
       ))}
     </S.FooterContainer>
