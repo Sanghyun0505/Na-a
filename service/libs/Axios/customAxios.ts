@@ -6,7 +6,7 @@ import {
 import token from "../Token/token";
 
 export const customAxios = axios.create({
-  baseURL: `/`,
+  baseURL: `/api`,
   headers: {
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`,
   },
