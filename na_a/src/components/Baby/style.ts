@@ -14,45 +14,34 @@ export const BabyListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 10px 0 10px 0;
+  gap: 15px;
+  margin-top: 10px;
 `;
 
 export const BabyListItem = styled.div`
   width: 90%;
   height: 80px;
-  border-radius: 10px;
-  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.3);
-
-  display: flex;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius:15px;
 `;
 
-export const BabyAble = styled.div`
-  width: 5%;
-  height: 80px;
-  background-color: #ffdf65;
-  border-radius: 10px 0 0 10px;
-`;
+export const Baby
 
-export const BabyList = styled.div`
-  width: 95%;
-  height: 80px;
-
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding-left: 20px;
-
+export const BabyImgContainer = styled.div`
+  width: 100%;
+  height: 100px;
   img {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 10px;
+    width: 100%;
+    height: 80px;
   }
 `;
 
-export const BabySubTitle = styled.div`
-  font-size: 13px;
-  color: #5e5e5e;
-  margin-top: 10px;
+export const BabyInfoContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+`;
+
+export const Name = styled.div`
+  font-size: 24px;
 `;

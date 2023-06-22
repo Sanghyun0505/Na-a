@@ -9,6 +9,7 @@ import BabyDaily from "../components/Baby/BabyDaily";
 import BabyCareRegistPage from "../pages/Regist/BabyCare/RegistPage";
 import LoginPage from "../pages/Auth/LoginPage";
 import SignUpPage from "../pages/Auth/SignUpPage";
+import BabyDailyDetail from "../components/Baby/BabyDaily/BabyDailyDetail";
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
       <Route path="/babycare" element={<BabyPage />} />
       <Route path="/babycare/regist" element={<BabyCareRegistPage />} />
       <Route path="/babycare/:id" element={<BabyDaily />} />
+      <Route path="/babycare/:id/daily" element={<BabyDailyDetail />} />
       <Route path="/festival" element={<FestivalPage />} />
       <Route path="/hospital" element={<HosptialPage />} />
       <Route path="/mypage" element={<UserPage />} />

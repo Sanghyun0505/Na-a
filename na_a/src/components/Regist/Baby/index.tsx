@@ -1,63 +1,116 @@
 import { useNavigate } from "react-router-dom";
-import { COMMUNITAY_ITEMS } from "../../../constants/Home";
-import { Category, CategoryContainer } from "../../Home/style";
 import { Container } from "../../style";
 import * as S from "../Community/style";
 import useHideHeader from "../../../hooks/Common/useHideHeader";
-import { useState } from "react";
 import backArrow from "../../../assets/backArrow.svg";
 import postListBtn from "../../../assets/postListBtn.svg";
 import imgUpload from "../../../assets/imgUpload.svg";
 import { Daily, DailyContainer, Input } from "./style";
+import { useBabyDaily } from "../../../hooks/Baby/useBabyDaily";
 
 export default function Baby() {
   const navigate = useNavigate();
   useHideHeader();
-  const [postImg, setPostImg] = useState<string>("");
-  const [text, setText] = useState<string>("");
-  const [select, setSelect] = useState<string>("전체");
+  const {
+    name,
+    gender,
+    handleArrayChange,
+    handleImgChange,
+    birth,
+    height,
+    weight,
+    bloodType,
+    img,
+    handleChange,
+    handleSubmit,
+  } = useBabyDaily();
   return (
     <>
       <S.CommunityRegistHeader>
         <S.BackArrowContainer>
           <img src={backArrow} alt="" onClick={() => navigate(-1)} />
-          <div>새 일지</div>
+          <div>아이 등록</div>
         </S.BackArrowContainer>
         <S.PostListBtnContainer>
-          <img src={postListBtn} alt="" />
+          <img src={postListBtn} alt="" onClick={handleSubmit} />
         </S.PostListBtnContainer>
       </S.CommunityRegistHeader>
       <Container>
-        <input id="file" type="file" style={{ display: "none" }} />
-        <S.PostImgLabel htmlFor="file">
-          <img src={imgUpload} alt="" />
-        </S.PostImgLabel>
-
+        <div>
+          <input
+            id="file"
+            type="file"
+            style={{ display: "none" }}
+            name="profileImage"
+            onChange={handleImgChange}
+          />
+          <S.PostImgLabel htmlFor="file">
+            <S.Img src={img ? img : imgUpload} alt="" isimg={img} />
+          </S.PostImgLabel>
+        </div>
         <DailyContainer>
-          <div>
-            <div>날짜</div>
-            <Input placeholder="입력... ex) 2023년 6월 22일" />
-          </div>
-          <div>
-            <div>건강상태</div>
-            <Input placeholder="입력..." />
-          </div>
-          <div>
-            <div>알레르기</div>
-            <Input placeholder="입력..." />
-          </div>
-          <div>
-            <div>복용중인 약</div>
-            <Input placeholder="입력..." />
-          </div>
-          <div>
-            <div>혈액형</div>
-            <Input placeholder="입력..." />
-          </div>
-          <div>
-            <div>기타</div>
-            <Input placeholder="입력..." />
-          </div>
+          <Daily>
+            <div>
+              <div>생일</div>
+              <Input
+                type="date"
+                value={birth.toString()}
+                name="birthdate"
+                onChange={handleArrayChange}
+                min="2023-06-22"
+              />
+            </div>
+            <div>
+              <div>이름</div>
+              <Input
+                type="text"
+                placeholder="입력..."
+                value={name}
+                name="name"
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <div>성별</div>
+              <Input
+                type="text"
+                placeholder="입력..."
+                value={gender}
+                name="gender"
+                onChange={handleArrayChange}
+              />
+            </div>
+            <div>
+              <div>키</div>
+              <Input
+                type="text"
+                placeholder="입력... "
+                value={height}
+                name="height"
+                onChange={handleArrayChange}
+              />
+            </div>
+            <div>
+              <div>몸무게</div>
+              <Input
+                type="text"
+                placeholder="입력... "
+                value={weight}
+                name="weight"
+                onChange={handleArrayChange}
+              />
+            </div>
+            <div>
+              <div>혈액형</div>
+              <Input
+                type="text"
+                placeholder="입력..."
+                value={bloodType}
+                name="bloodType"
+                onChange={handleChange}
+              />
+            </div>
+          </Daily>
         </DailyContainer>
       </Container>
     </>

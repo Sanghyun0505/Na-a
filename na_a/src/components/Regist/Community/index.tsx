@@ -7,11 +7,20 @@ import imgUpload from "../../../assets/imgUpload.svg";
 import { useNavigate } from "react-router-dom";
 import { Category, CategoryContainer } from "../../Home/style";
 import { COMMUNITAY_ITEMS } from "../../../constants/Home";
-import { useRegistList } from "../../../hooks/Regist/useRegistList";
+import { useCommunityRegistList } from "../../../hooks/Community/useCommunityRegistList";
 
 export default function CommunityRegist() {
-  const { handleImgChange, handleTextChange, text, setSelect, select } =
-    useRegistList();
+  const {
+    handleImgChange,
+    handleTextChange,
+    handleSubmit,
+    handleChange,
+    text,
+    setSelect,
+    title,
+    select,
+    postImg,
+  } = useCommunityRegistList();
   const navigate = useNavigate();
   useHideHeader();
 
@@ -23,7 +32,7 @@ export default function CommunityRegist() {
           <div>새 게시글</div>
         </S.BackArrowContainer>
         <S.PostListBtnContainer>
-          <img src={postListBtn} alt="" />
+          <img src={postListBtn} alt="" onClick={handleSubmit} />
         </S.PostListBtnContainer>
       </S.CommunityRegistHeader>
       <Container>
@@ -45,13 +54,21 @@ export default function CommunityRegist() {
           onChange={handleImgChange}
         />
         <S.PostImgLabel htmlFor="file">
-          <img src={imgUpload} alt="" />
+          <S.Img src={postImg ? postImg : imgUpload} alt="" isimg={postImg} />
         </S.PostImgLabel>
 
+        <S.TextTitle
+          placeholder="제목을 입력해주세요"
+          value={title}
+          type="text"
+          name="title"
+          onChange={handleChange}
+        />
         <S.TextInput
           placeholder="내용을 입력해주세요..."
           value={text}
           onChange={handleTextChange}
+          name="content"
         />
       </Container>
     </>

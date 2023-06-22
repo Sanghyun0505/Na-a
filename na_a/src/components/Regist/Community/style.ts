@@ -46,16 +46,28 @@ export const PostImgLabel = styled.label`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+`;
 
-  img {
-    width: 109px;
-    height: 89px;
-  }
+export const Img = styled.img<{ isimg: string }>`
+  width: ${(props) => (props.isimg !== "" ? "100%" : "109px")};
+  height: ${(props) => (props.isimg !== "" ? "380px" : "89px")};
+  object-fit: cover;
+`;
+
+export const TextTitle = styled.input`
+  width: 100%;
+  height: 50px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #dedede;
+  outline: none;
+  padding-left:13px;
 `;
 
 export const TextInput = styled.textarea`
   width: 100%;
-  height: 294px;
+  height: 244px;
   resize: none;
   border: none;
   outline: none;
