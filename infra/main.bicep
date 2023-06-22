@@ -71,7 +71,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 var sasConfig = {
   signedExpiry: '2023-06-30T23:59:59.0000000Z'
   signedResourceTypes: 'sco'
-  signedPermission: 'rw'
+  signedPermission: 'racwd'
   signedServices: 'b'
   signedProtocol: 'https'
 }

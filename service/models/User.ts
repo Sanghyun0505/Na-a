@@ -6,7 +6,7 @@ export enum UserType {
 }
 
 export interface IUser extends Document {
-  id: string;
+  _id: string;
   userid: string;
   hash: string;
   password: string;
