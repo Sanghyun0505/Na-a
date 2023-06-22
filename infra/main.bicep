@@ -42,7 +42,6 @@ resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabase
 }
 
 var cosmosDbKeys = cosmosDbAccount.listConnectionStrings().connectionStrings[0].connectionString
-output primaryConnectionString string = cosmosDbKeys
 
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
@@ -68,19 +67,6 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
   ]
 }
 
-var sasConfig = {
-  signedExpiry: '2023-06-30T23:59:59.0000000Z'
-  signedResourceTypes: 'sco'
-  signedPermission: 'racwd'
-  signedServices: 'b'
-  signedProtocol: 'https'
-}
-
-// Alternatively, we could use listServiceSas function
-var sasToken = storageAccount.listAccountSas(storageAccount.apiVersion, sasConfig).accountSasToken
-output sastoken string = sasToken
-
-
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: '${name}-appserviceplan'
   location: location
@@ -99,6 +85,11 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   }
 }
 
+var storageAccountKeys = listKeys(storageAccount.id, '2021-04-01')
+
+output storageAccountToken string = storageAccountKeys.keys[0].value
+
+
 resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   name: '${name}-app-hackers'
   location: location
@@ -109,12 +100,20 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
       linuxFxVersion: 'NODE|18-lts'
       appSettings: [
         {
-          name: 'ENV_VARIABLE_1'
-          value: 'value1'
+          name: 'MONGODB'
+          value: cosmosDbKeys
         }
         {
-          name: 'ENV_VARIABLE_2'
-          value: 'value2'
+          name: 'STORAGE_ACCOUNT_NAME'
+          value: storageAccount.name
+        }
+        {
+          name: 'STORAGE_ACCOUNT_KEY'
+          value: storageAccountKeys.keys[0].value
+        }
+        {
+          name: 'JWT_SECRET'
+          value: 'THISISSUPERSECRETVALUE'
         }
       ]
     }
