@@ -41,7 +41,7 @@ resource mySqlDatabase 'Microsoft.DBforMySQL/servers/databases@2017-12-01' = {
 }
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: '${name}-storageaccount'
+  name: '${name}serviceac'
   location: location
   kind: 'StorageV2'
   sku: {
@@ -54,24 +54,27 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 
 resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-08-01' = {
-  name: '${name}-storageaccount/default/images'
+  name: '${storageAccount.name}/default/images'
   properties: {
     publicAccess: 'None'
   }
+  dependsOn: [
+    storageAccount
+  ]
 }
 
-resource sasKey 'Microsoft.Storage/storageAccounts/blobServices/containers/sasTokens@2021-08-01' = {
-  parent: container
-  name: 'default'
-  properties: {
-    permissions: {
-      read: true
-      write: true
-      delete: true
-      list: true
-    }
-  }
+var sasConfig = {
+  signedExpiry: '2023-06-30T23:59:59.0000000Z'
+  signedResourceTypes: 'sco'
+  signedPermission: 'rw'
+  signedServices: 'b'
+  signedProtocol: 'https'
 }
+
+// Alternatively, we could use listServiceSas function
+var sasToken = storageAccount.listAccountSas(storageAccount.apiVersion, sasConfig).accountSasToken
+output sastoken string = sasToken
+
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: '${name}-appserviceplan'
@@ -92,12 +95,12 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
 }
 
 resource webApp 'Microsoft.Web/sites@2021-02-01' = {
-  name: '${name}-app'
+  name: '${name}-app-hackers'
   location: location
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
-      appCommandLine: ''
+      appCommandLine: 'pm2 --no-daemon start ecosystem.config.js'
       linuxFxVersion: 'NODE|18-lts'
       appSettings: [
         {
