@@ -1,38 +1,28 @@
-import { useState } from "react";
-import { COMMUNITAY_ITEMS } from "../../constants/Home";
 import HomeItem from "./HomeItem";
 import * as S from "./style";
-import addListBtn from "../../assets/addListBtn.svg";
 import { Container } from "../style";
-import { useNavigate } from "react-router-dom";
+import useTokenCheck from "../../hooks/Auth/useTokenCheck";
+import { useGetCommunityQuery } from "../../queries/Community/community.query";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { ChangeRegistAddress } from "../../store/Common/common.store";
 
 export default function Home() {
-  const [select, setSelect] = useState<string>("전체");
-  const navigate = useNavigate();
+  const { data: Home } = useGetCommunityQuery();
+  const setChangeRegistAddress = useSetRecoilState(ChangeRegistAddress);
 
+  useEffect(() => {
+    setChangeRegistAddress("/community/regist");
+  }, [setChangeRegistAddress]);
+
+  useTokenCheck();
   return (
     <Container>
-      <S.CategoryContainer>
-        {COMMUNITAY_ITEMS.map((item) => (
-          <S.Category
-            key={item.id}
-            isselect={select === item.name ? "true" : "false"}
-            onClick={() => setSelect(item.name)}
-          >
-            {item.name}
-          </S.Category>
-        ))}
-      </S.CategoryContainer>
       <S.ListWrap>
-        {Array.from({ length: 3 }).map((item, idx) => (
-          <HomeItem key={idx} />
+        {Home?.body.map((item) => (
+          <HomeItem data={item} key={item.id} />
         ))}
       </S.ListWrap>
-      <S.Btn
-        src={addListBtn}
-        onClick={() => navigate("/community/regist")}
-        alt=""
-      />
     </Container>
   );
 }

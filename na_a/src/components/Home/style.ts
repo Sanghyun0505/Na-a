@@ -26,18 +26,9 @@ export const ListWrap = styled.div`
 
   overflow-y: scroll;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   ::-webkit-scrollbar {
     display: none;
   }
   position: relative;
-`;
-
-export const Btn = styled.img`
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
 `;

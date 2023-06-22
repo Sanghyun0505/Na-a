@@ -15,8 +15,21 @@ export const ProfileContainer = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  padding-left: 10px;
+  padding: 0 10px 0 10px;
+`;
+
+export const ChoisedCategory = styled.div`
+  width: 60px;
+  height: 25px;
+  border-radius: 30px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  padding-top: 3px;
 `;
 
 export const ImgContainer = styled.div`
@@ -51,6 +64,9 @@ export const Text = styled.div`
 
   padding: 10px;
   overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
   div {
     word-wrap: break-word;
