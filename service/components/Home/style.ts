@@ -31,12 +31,6 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  img {
-    width: 26px;
-    height: 26px;
-    border-radius: 10px;
-    background-color: #d9d9d9;
-  }
   div {
     margin-top: 3px;
   }
@@ -45,7 +39,7 @@ export const Profile = styled.div`
 export const Category = styled.div`
   width: 60px;
   height: 24px;
-  background-color: #d9d9d9;
+  background-color: #ffdf65;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -59,7 +53,7 @@ export const ListImgContainer = styled.div`
   height: 380px;
 `;
 
-export const ListImg = styled(Image)`
+export const ListImg = styled.img`
   width: 100%;
   height: 100%;
 `;
