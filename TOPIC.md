@@ -31,4 +31,4 @@ Na-A
 - Storage Account를 이용한 이미지 업로드 기능
 
 ## 제품 소개 슬라이드
-[여기](./decks/Na-A__.pptx)에서 제품 소개 PPT를 확인하세요!
+[여기](./decks/na-a.pptx)에서 제품 소개 PPT를 확인하세요!
