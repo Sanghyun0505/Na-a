@@ -1,32 +1,58 @@
- `{{ 팀 이름 }}`팀 해커톤 주제
-# `Na-a`팀 해커톤 주제
+# Na-a - 아이케어
+해커그라운드 해커톤에 참여하는 Na-a 팀의 아이케어입니다.
 
-## 팀명
+## 제품/서비스 소개
 
-**(필수)** 팀명을 적어주세요.
-Na-A
+<!-- 아래 링크는 지우지 마세요 -->
+[제품/서비스 소개 보기](TOPIC.md)
+<!-- 위 링크는 지우지 마세요 -->
 
-## 제품명
+## 오픈 소스 라이센스
 
-**(필수)** 해커톤에서 만들 제품 또는 서비스 이름을 적어주세요.
-아이케어
+<!-- 아래 링크는 지우지 마세요 -->
+[오픈소스 라이센스 보기](./LICENSE)
+<!-- 위 링크는 지우지 마세요 -->
 
-## 참가 동기
+## 설치 방법
+### 사전 준비 사항
 
-**(필수)** 해커톤에 참가하기 된 동기를 적어주세요.
-개발자 및 기획, 디자이너 간의 네트워킹을 통한 인싸이트 수립
+- GitHub Account
+- GitHub CLI
+- Azure CLI
+- Azure Account
+- Azure Resource Group
 
-## 주요 기능 및 특징, 기대 효과
+### 인프라 배포하기
 
-**(필수)** 제품 또는 서비스의 주요 기능, 특징과 그 기대 효과에 대해 적어주세요.
-미흡한 지방 인프라로 인해 아이돌봄의 불편을 겪는 부모를 위해 지방 편의시설 및
-네트워크 인프라를 구축을 통해 '원테이크 아이돌봄서비스'를 제공하여 수도권과 지방의
-문화 격차 해소 
+1. 이 리포지토리를 포크하고 다음 명령어로 클론합니다.
+```bash
+git clone https://github.com/{{내 깃헙 아이디}}/Na-a.git
+cd Na-a
+```
+1. 다음과 같이 인프라를 배포합니다
+```bash
+az login
+az deployment group create --resource-group "{{내 리소스 그룹}}" --template-file ./infra/main.bicep --parameters name={{원하는 서비스 아이디}}
+```
+3. 다음과 같이 github workflow 시크릿을 설정합니다. (윈도우 기준)
+```bash
+az webapp deployment list-publishing-profiles --name "{{원하는 서비스 아이디}}-app-heckers" --resource-group "{{내 리소스 그룹}}" --xml > publish_profile.xml
 
-아이케어-부모의 아이 일지 작성/응급상황시 아이 기본정보
-커뮤니티-지역 별 부모 커뮤니티
-행사-지역 별 행사정보 공유
-병원-응급실 병상확인/인근 병원 검색/병원 후기
-
-## 제품 아키텍처 (이미지)
-
+gh auth login
+gh secret set AZURE_APP_NAME --repo {{내 깃헙 아이디}}/Na-a --body "{{원하는 서비스 아이디}}"
+cat publish_profile.xml | gh secret set AZUREAPPSERVICE_PUBLISHPROFILE --repo {{내 깃헙 아이디}}/Na-a
+```
+4. 포크한 리포지토리의 Github Actions를 활성화 해줍니다.
+```
+https://github.com/{{자신의 Github ID}}/Na-a/actions
+에 접속해 초록색 Enable 버튼 클릭
+```
+5. 다음과 같이 github actions workflow를 실행합니다. (윈도우 기준)
+```bash
+gh workflow run "Deploy Azure" --repo {{내 깃헙 아이디}}/Na-a
+```
+6. 배포가 완료될때까지 기다립니다. (15분 가량 소요됩니다.)
+7. 다음과 같이 배포를 확인합니다.
+```bash
+curl https://{{원하는 서비스 아이디}}-app-hackers.azurewebsites.net
+```
