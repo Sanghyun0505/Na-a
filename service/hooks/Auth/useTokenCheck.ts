@@ -8,7 +8,7 @@ const useTokenCheck = () => {
   useEffect(() => {
     const checkTokens = () => {
       if (!token.getToken(ACCESS_TOKEN_KEY)) {
-        router.push("/SignInPage");
+        router.push("/signin");
       }
     };
     checkTokens();
