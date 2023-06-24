@@ -41,7 +41,7 @@ export default function SignIn() {
         <S.AuthButton type="submit">로그인</S.AuthButton>
         <S.AuthIsAccount>
           계정이 없으신가요?{" "}
-          <span onClick={() => router.push("/SignUpPage")}>회원가입하기</span>
+          <span onClick={() => router.push("/signup")}>회원가입하기</span>
         </S.AuthIsAccount>
       </S.AuthForm>
     </S.AuthContainer>
