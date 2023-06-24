@@ -27,24 +27,24 @@ export const FOOTER_ITEMS: Type[] = [
     id: 1,
     img: children,
     selectImg: selectChildren,
-    link: "/ChildrenPage",
+    link: "/childrenpage",
   },
   {
     id: 2,
     img: festival,
     selectImg: selectFestival,
-    link: "/FestivalPage",
+    link: "/festivalpage",
   },
   {
     id: 3,
     img: hospital,
     selectImg: selectHospital,
-    link: "/HospitalPage",
+    link: "/hospitalpage",
   },
   {
     id: 4,
     img: myPage,
     selectImg: selectMyPage,
-    link: "/UserPage",
+    link: "/userpage",
   },
 ];

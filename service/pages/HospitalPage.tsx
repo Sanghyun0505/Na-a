@@ -1,5 +1,5 @@
 import Hospital from "@/components/Hospital";
 
-export default function HospitalPage() {
+export default function hospitalpage() {
   return <Hospital />;
 }

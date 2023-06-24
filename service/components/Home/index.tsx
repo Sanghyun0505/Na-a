@@ -13,6 +13,7 @@ import {
 import { customAxios } from "@/libs/Axios/customAxios";
 import { CommunityListReponse } from "@/types/Community/community.type";
 import hackerGround from "@/public/hackerGround.svg";
+import { HOME_ITEMS } from "@/constants/Home/home.constant";
 
 export default function Home() {
   const setChangeRegistAddress = useSetRecoilState(ChangeRegistAddress);
@@ -20,7 +21,7 @@ export default function Home() {
   const setCommunityCommentId = useSetRecoilState(CommunityCommentId);
   const [commuList, setCommuList] = useState<CommunityListReponse | null>(null);
   useEffect(() => {
-    setChangeRegistAddress("/CommunityRegistPage");
+    setChangeRegistAddress("/communityregistpage");
   }, [setChangeRegistAddress]);
   useTokenCheck();
 
@@ -29,9 +30,7 @@ export default function Home() {
       try {
         const { data } = await customAxios.get("/community");
         setCommuList(data);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     getCommunityList();
   }, []);
@@ -39,57 +38,44 @@ export default function Home() {
   return (
     <CommonContainer>
       <S.HomeWrap>
-        {commuList?.data.length!! > 0 &&
-          commuList?.data.map((item) => (
-            <S.HomeCotainer key={item._id}>
-              <S.ListProfileContainer>
-                <S.Profile>
-                  <img
-                    src={
-                      item.user.profileImage
-                        ? item.user.profileImage
-                        : hackerGround
-                    }
-                    height={26}
-                    width={26}
-                    alt="Image"
-                  />
-                  <div>{item.user.userid}</div>
-                </S.Profile>
-                <S.Category>{item.category}</S.Category>
-              </S.ListProfileContainer>
+        {HOME_ITEMS.map((item) => (
+          <S.HomeCotainer key={item.id}>
+            <S.ListProfileContainer>
+              <S.Profile>
+                <Image src={hackerGround} alt="Image" />
+                <div>{item.userid}</div>
+              </S.Profile>
+              <S.Category>{item.category}</S.Category>
+            </S.ListProfileContainer>
 
-              <S.ListImgContainer>
-                <S.ListImg
-                  src={item.images.length > 0 ? item.images[0] : hackerGround}
-                  alt="listImg"
-                />
-              </S.ListImgContainer>
+            <S.ListImgContainer>
+              <S.ListImg src={item.images} alt="listImg" />
+            </S.ListImgContainer>
 
-              <S.ListContentContainer>
-                <S.Text>
-                  <div
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {item.title}
-                  </div>
-                  <div>{item.content}</div>
-                </S.Text>
-                <S.ChatWrap
-                  onClick={async () => {
-                    await setCommunityCommentId(item._id);
-                    setCommunityModal(true);
+            <S.ListContentContainer>
+              <S.Text>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    marginBottom: "10px",
                   }}
                 >
-                  <S.ChatImg src={chat} alt="chat" />
-                </S.ChatWrap>
-              </S.ListContentContainer>
-            </S.HomeCotainer>
-          ))}
+                  {item.title}
+                </div>
+                <div>{item.content}</div>
+              </S.Text>
+              <S.ChatWrap
+                onClick={async () => {
+                  await setCommunityCommentId("1");
+                  setCommunityModal(true);
+                }}
+              >
+                <S.ChatImg src={chat} alt="chat" />
+              </S.ChatWrap>
+            </S.ListContentContainer>
+          </S.HomeCotainer>
+        ))}
       </S.HomeWrap>
     </CommonContainer>
   );

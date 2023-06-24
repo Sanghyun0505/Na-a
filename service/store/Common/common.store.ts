@@ -10,6 +10,11 @@ export const HideFooter = atom<boolean>({
   default: false,
 });
 
+export const HideAddBtn = atom<boolean>({
+  key: "hideAddBtn",
+  default: false,
+});
+
 export const ChangeRegistAddress = atom<string>({
   key: "changeRegistAddress",
   default: "",

@@ -1,5 +1,17 @@
 import { CommonContainer } from "@/styles/commonStyle";
+import * as S from "./style";
+import FestivalItem from "./FestivalItem";
+import { useHideAddBtn } from "@/hooks/Common/useHideAddBtn";
 
 export default function Festival() {
-  return <CommonContainer>행사페이지</CommonContainer>;
+  useHideAddBtn();
+  return (
+    <CommonContainer>
+      <S.FestivalWrap>
+        <S.FesitvalItemContainer>
+          <FestivalItem />
+        </S.FesitvalItemContainer>
+      </S.FestivalWrap>
+    </CommonContainer>
+  );
 }

@@ -7,24 +7,22 @@ import { customAxios } from "@/libs/Axios/customAxios";
 import { ChildrenListResponse } from "@/types/Children/children.type";
 import { getDateText } from "@/libs/Date/getDateText";
 import { useRouter } from "next/router";
+import { CHILDREN_ITEMS } from "@/constants/Children/children.constant";
 
 export default function Children() {
   const setChangeRegistAddress = useSetRecoilState(ChangeRegistAddress);
   const [childList, setChildList] = useState<ChildrenListResponse | null>(null);
   const router = useRouter();
   useEffect(() => {
-    setChangeRegistAddress("/ChildrenRegistPage");
+    setChangeRegistAddress("/childrenregistpage");
   }, [setChangeRegistAddress]);
 
   useEffect(() => {
     const getChildrenList = async () => {
       try {
         const data = await customAxios.get("/child");
-        console.log(data);
         setChildList(data.data);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     getChildrenList();
   }, []);
@@ -33,18 +31,17 @@ export default function Children() {
     <CommonContainer>
       <S.ChildrenWrap>
         <S.ChildrenContainer>
-          {childList?.data.map((item) => (
+          {CHILDREN_ITEMS.map((item) => (
             <S.ChildrenListItem
-              key={item._id}
-              onClick={() => router.push(`ChildrenPage/${item._id}`)}
+              key={item.id}
+              onClick={() => router.push(`childrenpage/${item.id}`)}
             >
               <S.Thin />
               <S.Info>
+                <S.ChildrenImage src={item.img} alt="img" />
                 <div>
                   <S.ChildrenTitle>{item.name}</S.ChildrenTitle>
-                  <S.ChildrenSubTitle>
-                    {getDateText(new Date(item.birthdate!!))}
-                  </S.ChildrenSubTitle>
+                  <S.ChildrenSubTitle>{item.upload}</S.ChildrenSubTitle>
                 </div>
               </S.Info>
             </S.ChildrenListItem>

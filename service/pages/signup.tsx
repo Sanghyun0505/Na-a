@@ -1,5 +1,5 @@
 import SignUp from "@/components/Auth/SignUp.tsx";
 
-export default function SignUpPage() {
+export default function signup() {
   return <SignUp />;
 }

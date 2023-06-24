@@ -17,7 +17,7 @@ export const ChildrenRegistForm = styled.form`
 export const ChildrenImgContainer = styled.label`
   width: 100%;
   height: 380px;
-  background-color: gray;
+  background-color: #FFDF65;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,6 +67,6 @@ export const SubmitBtn = styled.button`
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  outline:none;
+  outline: none;
   border: none;
 `;

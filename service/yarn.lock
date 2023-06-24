@@ -99,6 +99,19 @@
     events "^3.0.0"
     tslib "^2.2.0"
 
+"@azure/storage-file-share@^12.14.0":
+  version "12.14.0"
+  resolved "https://registry.npmjs.org/@azure/storage-file-share/-/storage-file-share-12.14.0.tgz"
+  integrity sha512-gTiA+MiRPGV77u9cyG8Px5P7X/XLBGYj6/PU6ldAeu9Poo0+ivushz1dOzPLZuSL6BhyKnh7RL2DolxUyHaMGA==
+  dependencies:
+    "@azure/abort-controller" "^1.0.0"
+    "@azure/core-http" "^3.0.0"
+    "@azure/core-paging" "^1.1.1"
+    "@azure/core-tracing" "1.0.0-preview.13"
+    "@azure/logger" "^1.0.0"
+    events "^3.0.0"
+    tslib "^2.2.0"
+
 "@babel/cli@^7.21.0":
   version "7.22.5"
   resolved "https://registry.npmjs.org/@babel/cli/-/cli-7.22.5.tgz"
@@ -2004,6 +2017,11 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
+kakao.maps.d.ts@^0.1.38:
+  version "0.1.38"
+  resolved "https://registry.npmjs.org/kakao.maps.d.ts/-/kakao.maps.d.ts-0.1.38.tgz"
+  integrity sha512-ub3ITsp/XfM7OikRvnsQiK6oZgyqVKVvGm9bmChudfDRjFa6xrS2O/bLNs0EyFCQZufVBXLLJK9+T06LOYxNiw==
+
 kareem@2.5.1:
   version "2.5.1"
   resolved "https://registry.npmjs.org/kareem/-/kareem-2.5.1.tgz"
@@ -2333,6 +2351,13 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-kakao-maps-sdk@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.npmjs.org/react-kakao-maps-sdk/-/react-kakao-maps-sdk-1.1.9.tgz"
+  integrity sha512-9bm4mS7eCRpIQ5tRdd0U0fN9XC10sdkr1Fbh4/y+Eik8eQVPVkguRPwmd8Cn7IuJZyaF4gyjOILdDeDrqcbveg==
+  dependencies:
+    kakao.maps.d.ts "^0.1.38"
 
 react-modal-sheet@^2.0.0:
   version "2.0.0"

@@ -51,7 +51,7 @@ export const Title = styled.div`
 export const RegistImgContainer = styled.label`
   width: 100%;
   height: 380px;
-  background-color: #d9d9d9;
+  background-color: #ffdf65;
   display: flex;
   justify-content: center;
   align-items: center;

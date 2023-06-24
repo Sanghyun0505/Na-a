@@ -15,6 +15,7 @@ import { customAxios } from "@/libs/Axios/customAxios";
 import { CommmentListReponse } from "@/types/Community/community.type";
 import { getTimeAgo } from "@/libs/Date/getTimeAgo";
 import CommentItem from "./CommentItem";
+import { COMMENT_ITEMS } from "@/constants/community/community.constant";
 
 export default function ModalCommunity() {
   const [communityModal, setCommunityModal] = useRecoilState(CommunityModal);
@@ -30,9 +31,7 @@ export default function ModalCommunity() {
       try {
         const data = await customAxios.get(`community/${communityCommentId}`);
         setCommentList(data.data);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     getCommentList();
   }, []);
@@ -49,8 +48,13 @@ export default function ModalCommunity() {
         <Sheet.Content>
           <S.ModalWrap>
             <S.ModalContainer>
-              {commentList?.data.comments.map((item) => (
-                <CommentItem id={communityCommentId} key={item} commentId={item}/>
+              {COMMENT_ITEMS.map((item) => (
+                <CommentItem
+                  id={communityCommentId}
+                  key={item.id}
+                  data={item}
+                  commentId={"0"}
+                />
               ))}
             </S.ModalContainer>
           </S.ModalWrap>

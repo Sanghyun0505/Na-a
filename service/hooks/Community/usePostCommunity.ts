@@ -16,11 +16,8 @@ export const usePostCommunity = () => {
       if (e.target.files) {
         formData.append("file", e.target.files[0]);
         const data = await customAxios.post("/files", formData);
-        console.log(data);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -58,9 +55,7 @@ export const usePostCommunity = () => {
       setTitle("");
       setContent("");
       router.push("/");
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   return {

@@ -19,12 +19,8 @@ export const useChildren = () => {
       if (e.target.files) {
         formData.append("file", e.target.files[0]);
         const { data } = await customAxios.post("files", formData);
-        // setImage(data.data);
-        console.log(data.data);
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +78,6 @@ export const useChildren = () => {
       };
       const data = await customAxios.post("/child", update);
       window.alert("아이를 등록하였습니다!");
-      console.log(data);
       setImage("");
       setName("");
       setBloodType("");
@@ -92,7 +87,6 @@ export const useChildren = () => {
       setWeight("");
       router.back();
     } catch (e) {
-      console.log(e);
     }
   };
 

@@ -25,6 +25,7 @@ export const ChildrenListItem = styled.div`
   border-radius: 10px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
   display: flex;
+  background-color: #ffffff;
 `;
 
 export const Thin = styled.div`
@@ -44,7 +45,7 @@ export const Info = styled.div`
   padding-left: 15px;
 `;
 
-export const ChildrenImage = styled(Image)`
+export const ChildrenImage = styled.img`
   width: 48px;
   height: 48px;
   border-radius: 10px;

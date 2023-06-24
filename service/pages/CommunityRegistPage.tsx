@@ -1,5 +1,5 @@
 import CommunityRegist from "@/components/Home/Regist";
 
-export default function CommunityRegistPage() {
+export default function communityregistpage() {
   return <CommunityRegist />;
 }

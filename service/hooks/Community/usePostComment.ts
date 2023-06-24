@@ -21,9 +21,7 @@ export const usePostComment = () => {
         content,
       });
       setContent("");
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   return { content, handleChange, handleCommentSubmit };

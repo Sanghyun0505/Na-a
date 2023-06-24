@@ -15,6 +15,7 @@ export const HomeCotainer = styled.div`
   width: 100%;
   height: 495px;
   border-top: 1px solid #dedede;
+  background-color: #ffffff;
 `;
 
 export const ListProfileContainer = styled.div`
@@ -31,6 +32,11 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  img {
+    width: 26px;
+    height: 26px;
+    border-radius: 10px;
+  }
   div {
     margin-top: 3px;
   }

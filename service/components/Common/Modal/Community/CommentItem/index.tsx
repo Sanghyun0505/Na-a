@@ -12,9 +12,10 @@ import { getTimeAgo } from "@/libs/Date/getTimeAgo";
 interface Props {
   id: string;
   commentId: string;
+  data: any;
 }
 
-export default function CommentItem({ id, commentId }: Props) {
+export default function CommentItem({ id, commentId, data }: Props) {
   const [comments, setComments] = useState<CommentIdReponse | null>(null);
   useEffect(() => {
     const comment = async () => {
@@ -23,9 +24,7 @@ export default function CommentItem({ id, commentId }: Props) {
           `community/${id}/comment/${commentId}`
         );
         setComments(data.data);
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) {}
     };
     comment();
   }, []);
@@ -34,12 +33,11 @@ export default function CommentItem({ id, commentId }: Props) {
     <ModalItem>
       <Info>
         <div>
-          {comments?.data.user.userid} ·{" "}
-          {getTimeAgo(new Date(comments?.data.createdAt!!))}
+          {data.userid} · {data.date}
         </div>
         <Image src={edit} alt="edit" />
       </Info>
-      <Comment>{comments?.data.content}</Comment>
+      <Comment>{data.content}</Comment>
     </ModalItem>
   );
 }

@@ -22,7 +22,6 @@ export const useSignIn = () => {
 
   const handleSignInSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(variable);
     try {
       if (variable.userid === "") {
         return window.alert("아이디를 다시 입력해주세요!");
@@ -35,7 +34,6 @@ export const useSignIn = () => {
       router.push("/");
       setVariable({ userid: "", password: "" });
     } catch (e) {
-      console.log(e);
       window.alert("로그인을 하지 못했습니다.");
     }
   };

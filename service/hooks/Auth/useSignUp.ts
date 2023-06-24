@@ -69,7 +69,6 @@ export const useSignUp = () => {
       router.push("/SignInPage");
     } catch (e) {
       window.alert("회원가입을 하지 못했습니다.");
-      console.log(e);
     }
   };
 
